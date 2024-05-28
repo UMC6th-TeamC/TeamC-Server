@@ -1,4 +1,4 @@
-package com.umc.teamB;
+package com.umc.teamC;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;

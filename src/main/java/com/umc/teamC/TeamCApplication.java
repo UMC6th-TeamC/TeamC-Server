@@ -1,13 +1,13 @@
-package com.umc.teamB;
+package com.umc.teamC;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class TeamBApplication {
+public class TeamCApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(TeamBApplication.class, args);
+		SpringApplication.run(TeamCApplication.class, args);
 	}
 
 }
