@@ -6,10 +6,9 @@ import org.springframework.http.HttpStatus;
 
 @Getter
 @Builder
-public record ErrorReasonDTO(
-        HttpStatus httpStatus,
-        String code,
-        String message,
-        boolean isSuccess
-) {
+public class ErrorReasonDTO {
+    private final HttpStatus httpStatus;
+    private final String code;
+    private final String message;
+    private final boolean isSuccess;
 }
