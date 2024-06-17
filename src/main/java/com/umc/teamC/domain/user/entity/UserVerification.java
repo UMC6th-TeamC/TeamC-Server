@@ -1,4 +1,4 @@
-package com.umc.teamC.global.domain;
+package com.umc.teamC.domain.user.entity;
 
 import jakarta.persistence.*;
 import lombok.*;
