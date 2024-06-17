@@ -1,12 +1,8 @@
-package com.umc.domain;
+package com.umc.teamC.global.domain;
 
-import com.umc.domain.common.BaseEntity;
+import com.umc.teamC.global.domain.common.BaseEntity;
 import jakarta.persistence.*;
 import lombok.*;
-
-import java.time.LocalDateTime;
-import java.util.ArrayList;
-import java.util.List;
 
 @Entity
 @Getter
