@@ -1,6 +1,6 @@
 package com.umc.teamC.domain.user.entity;
 
-import com.umc.teamC.global.domain.common.BaseEntity;
+import com.umc.teamC.global.common.BaseEntity;
 import jakarta.persistence.*;
 import lombok.*;
 
