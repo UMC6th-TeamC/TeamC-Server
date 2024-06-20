@@ -4,9 +4,10 @@ import lombok.Builder;
 import org.springframework.http.HttpStatus;
 
 @Builder
-public class ErrorReasonDTO {
-    private final HttpStatus httpStatus;
-    private final String code;
-    private final String message;
-    private final boolean isSuccess;
+public record ErrorReasonDTO(
+        HttpStatus httpStatus,
+        boolean isSuccess,
+        String code,
+        String message
+) {
 }
