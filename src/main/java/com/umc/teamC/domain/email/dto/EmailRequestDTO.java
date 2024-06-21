@@ -1,4 +1,4 @@
-package com.umc.teamC.domain.email2.dto;
+package com.umc.teamC.domain.email.dto;
 
 import lombok.Getter;
 

@@ -1,14 +1,20 @@
 package com.umc.teamC.domain.user.jwt;
 
 
+import com.umc.teamC.global.common.code.status.ErrorStatus;
+import com.umc.teamC.global.common.exception.GeneralException;
 import io.jsonwebtoken.Jwts;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.security.authentication.AnonymousAuthenticationToken;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Component;
 
 import javax.crypto.SecretKey;
 import javax.crypto.spec.SecretKeySpec;
 import java.nio.charset.StandardCharsets;
 import java.util.Date;
+import java.util.Objects;
 
 @Component
 public class JWTUtil {
@@ -23,6 +29,21 @@ public class JWTUtil {
     public String getUsername(String token) {
 
         return Jwts.parser().verifyWith(secretKey).build().parseSignedClaims(token).getPayload().get("username", String.class);
+    }
+
+    public static String getLoggedInUsername() {
+        try {
+            Authentication authentication = Objects.requireNonNull(SecurityContextHolder
+                    .getContext()
+                    .getAuthentication());
+            if (authentication instanceof AnonymousAuthenticationToken) {
+                authentication = null;
+            }
+
+            return authentication.getName();
+        } catch (NullPointerException e) {
+            throw new GeneralException(ErrorStatus._FORBIDDEN);
+        }
     }
 
     public String getRole(String token) {

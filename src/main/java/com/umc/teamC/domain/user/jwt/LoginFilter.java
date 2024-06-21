@@ -3,6 +3,7 @@ package com.umc.teamC.domain.user.jwt;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.umc.teamC.domain.user.dto.CustomUserDetails;
 import com.umc.teamC.global.common.BaseResponse;
+import com.umc.teamC.global.common.code.status.ErrorStatus;
 import jakarta.servlet.FilterChain;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
@@ -72,8 +73,16 @@ public class LoginFilter extends UsernamePasswordAuthenticationFilter {
 
     //로그인 실패시 실행하는 메소드
     @Override
-    protected void unsuccessfulAuthentication(HttpServletRequest request, HttpServletResponse response, AuthenticationException failed) {
+    protected void unsuccessfulAuthentication(HttpServletRequest request, HttpServletResponse response, AuthenticationException failed) throws IOException {
         //로그인 실패시 401 응답 코드 반환
-        response.setStatus(401);
+        response.setContentType("application/json; charset=UTF-8");
+        response.setStatus(HttpStatus.UNAUTHORIZED.value());
+        ErrorStatus UN_AUTH = ErrorStatus._AUTHENTICATION_FAILED;
+
+        BaseResponse<Object> errorResponse =
+                BaseResponse.onFailure(UN_AUTH.getCode(), UN_AUTH.getMessage(), null);
+
+        ObjectMapper mapper = new ObjectMapper();
+        mapper.writeValue(response.getOutputStream(), errorResponse);
     }
 }

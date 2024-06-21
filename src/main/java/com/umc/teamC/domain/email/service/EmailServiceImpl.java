@@ -1,4 +1,4 @@
-package com.umc.teamC.domain.email2.service;
+package com.umc.teamC.domain.email.service;
 
 import jakarta.mail.internet.InternetAddress;
 import jakarta.mail.internet.MimeMessage;

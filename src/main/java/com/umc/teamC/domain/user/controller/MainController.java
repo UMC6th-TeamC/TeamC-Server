@@ -13,7 +13,4 @@ public class MainController {
     public BaseResponse<String> MainP() {
         return BaseResponse.onSuccess("성공!");
     }
-    /*public String MainP() {
-        return "Main Controller";
-    }*/
 }

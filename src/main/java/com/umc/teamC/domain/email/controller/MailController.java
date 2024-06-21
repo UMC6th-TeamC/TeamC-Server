@@ -1,15 +1,14 @@
-package com.umc.teamC.domain.email2.controller;
+package com.umc.teamC.domain.email.controller;
 
 
-import com.umc.teamC.domain.email2.service.EmailService;
-import com.umc.teamC.domain.email2.dto.EmailRequestDTO;
-import com.umc.teamC.domain.email2.service.EmailServiceImpl;
+import com.umc.teamC.domain.email.service.EmailService;
+import com.umc.teamC.domain.email.dto.EmailRequestDTO;
+import com.umc.teamC.domain.email.service.EmailServiceImpl;
 import com.umc.teamC.global.common.BaseResponse;
 import io.swagger.v3.oas.annotations.Operation;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 

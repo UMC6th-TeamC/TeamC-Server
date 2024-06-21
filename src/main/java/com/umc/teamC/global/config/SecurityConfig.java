@@ -86,6 +86,7 @@ public class SecurityConfig {
         http
                 .formLogin((auth) -> auth.disable());
 
+
         //http basic 인증 방식 disable
         http
                 .httpBasic((auth) -> auth.disable());
@@ -94,9 +95,9 @@ public class SecurityConfig {
         http
                 .authorizeHttpRequests((auth) -> auth
                         .requestMatchers("/login", "/", "join").permitAll()
-                        .requestMatchers("/api/v1/users/id/mail/check", "/api/v1/users/id/mail/authentication").permitAll()
+                        .requestMatchers("/mail/check", "/mail/authentication").permitAll()
                         .requestMatchers(allowUrl).permitAll()
-                        .requestMatchers("/admin").hasRole("ADMIN")
+                        .requestMatchers("/user").hasRole("ADMIN")
                         .anyRequest().authenticated());
 
 
