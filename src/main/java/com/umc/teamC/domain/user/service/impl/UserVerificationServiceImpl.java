@@ -22,8 +22,9 @@ public class UserVerificationServiceImpl implements UserVerificationService {
 
     @Override
     public UserVerification createUserVerification(Long verificationId, UserVerificationRequestDTO.JoinUserVerificationDTO joinUserVerificationDTO) {
-        UserVerification userVerification = UserVerificationConverter.toUserVerification(joinUserVerificationDTO);
-        return userVerificationRepository.save(userVerification);
+        //UserVerification userVerification = UserVerificationConverter.toUserVerification(joinUserVerificationDTO);
+        //return userVerificationRepository.save(userVerification);
+        return null;
     }
 
 }

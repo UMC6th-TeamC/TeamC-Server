@@ -12,10 +12,11 @@ import java.time.LocalDateTime;
 @AllArgsConstructor
 public class UserVerification {
 
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long verification_id;
-
+    /*
     @Column(nullable = false, length = 9)
     private String student_id;
 
@@ -35,5 +36,5 @@ public class UserVerification {
     private LocalDateTime expired_at;
 
     @OneToOne(mappedBy = "userVerification")
-    private User user;
+    private User user; */
 }

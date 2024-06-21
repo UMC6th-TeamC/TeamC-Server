@@ -7,6 +7,7 @@ import com.umc.teamC.domain.user.dto.UserVerificationRequestDTO;
 
 
 public class UserVerificationConverter {
+    /*
 
     public static UserVerification toUserVerification(UserVerificationRequestDTO.JoinUserVerificationDTO joinUserVerificationDTO) {
         return UserVerification.builder()
@@ -34,6 +35,8 @@ public class UserVerificationConverter {
                 .expiredAt(userVerification.getExpired_at())
                 .build();
     }
+
+     */
 
 
 }

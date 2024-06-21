@@ -6,6 +6,7 @@ import com.umc.teamC.domain.user.entity.UserVerification;
 import com.umc.teamC.domain.user.dto.UserResponseDTO;
 
 public class UserConverter {
+    /*
     //User를 빌더패턴으로
     //Converter안의 메소드 명은 to(리턴시켜주는 것)
 
@@ -33,5 +34,6 @@ public class UserConverter {
                 .createdAt(user.getCreatedAt())
                 .build();
     }
+    */
 
 }

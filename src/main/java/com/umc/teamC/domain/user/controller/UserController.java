@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.*;
 @CrossOrigin
 public class UserController {
     //구현할 메서드 작성
+    /*
     private final UserService userService;
 
     @PostMapping("/users")
@@ -22,6 +23,5 @@ public class UserController {
         User user = userService.createUser(joinDTO);
         return BaseResponse.onSuccess(UserConverter.toJoinResultDTO(user));
     }
-
-
+    */
 }

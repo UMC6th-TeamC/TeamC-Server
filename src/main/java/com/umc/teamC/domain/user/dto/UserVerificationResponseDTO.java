@@ -9,6 +9,7 @@ import lombok.NoArgsConstructor;
 import java.time.LocalDateTime;
 
 public class UserVerificationResponseDTO {
+    /*
     @Getter
     @AllArgsConstructor
     @NoArgsConstructor
@@ -41,4 +42,6 @@ public class UserVerificationResponseDTO {
                 .expiredAt(verification.getExpired_at())
                 .build();
     }
+
+     */
 }

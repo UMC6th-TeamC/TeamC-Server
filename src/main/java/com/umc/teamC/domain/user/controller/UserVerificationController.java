@@ -15,11 +15,14 @@ import org.springframework.web.bind.annotation.*;
 @RequestMapping("/api/v1")
 @CrossOrigin
 public class UserVerificationController {
+    /*
     private final UserVerificationService userVerificationService;
     @PostMapping("/users/{userId}/posts")
     public BaseResponse<UserVerificationResponseDTO.JoinUserVerificationResultDTO> createUserVerification(@PathVariable Long verificationId, @RequestBody UserVerificationRequestDTO.JoinUserVerificationDTO joinUserVerificationDTO) {
         UserVerification userVerification = userVerificationService.createUserVerification(verificationId, joinUserVerificationDTO);
         return BaseResponse.onSuccess(UserVerificationConverter.toJoinUserVerificationResultDTO(userVerification));
     }
+
+     */
 
 }

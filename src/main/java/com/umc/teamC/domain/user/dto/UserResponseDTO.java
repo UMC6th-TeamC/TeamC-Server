@@ -10,6 +10,7 @@ import java.time.LocalDateTime;
 import java.util.List;
 
 public class UserResponseDTO {
+    /*
     @Getter //필드에 접근
     @AllArgsConstructor //모든 필드를 인자로 받는 생성자를 자동으로 생성
     @NoArgsConstructor //매개변수가 없는 기본 생성자를 자동으로 생성
@@ -53,4 +54,6 @@ public class UserResponseDTO {
     public static class UserPreviewListDTO {
         List<UserPreviewDTO> userPreviewDTOList;
     }
+
+     */
 }

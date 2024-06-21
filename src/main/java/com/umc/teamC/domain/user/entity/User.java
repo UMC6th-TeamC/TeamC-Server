@@ -5,6 +5,22 @@ import jakarta.persistence.*;
 import lombok.*;
 
 @Entity
+@Setter
+@Getter
+public class User {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+
+    private String username;
+    private String password;
+
+    private String role;
+}
+
+
+/*
+@Entity
 @Getter
 @Builder
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
@@ -27,4 +43,4 @@ public class User extends BaseEntity {
     @OneToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "verification_id")
     private UserVerification userVerification;
-}
+} */
