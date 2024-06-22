@@ -5,26 +5,27 @@ import jakarta.persistence.*;
 import lombok.*;
 
 @Entity
+@Setter
 @Getter
-@Builder
-@NoArgsConstructor(access = AccessLevel.PROTECTED)
-@AllArgsConstructor
 public class User extends BaseEntity {
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long user_id;
+    private Long id;
 
-    @Column(nullable = false, length = 9)
-    private String student_id;
+    @Column(nullable = false)
+    private String username;
 
-    @Column(nullable = false, length = 20)
+    @Column(nullable = false)
     private String password;
 
-    @Column(nullable = false, length = 10)
     private String nickname;
 
-    @OneToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "verification_id")
-    private UserVerification userVerification;
+    private String role;
+
+
+    public void update(String nickname) {
+        this.nickname = nickname;
+    }
 }
+
+
