@@ -68,6 +68,16 @@ public class SecurityConfig {
 
                         configuration.setAllowedOrigins(Collections.singletonList("http://localhost:3000"));
                         configuration.setAllowedOrigins(Collections.singletonList("http://43.201.182.155:3000"));
+                        configuration.setAllowedOrigins(Collections.singletonList("http://43.201.182.155"));
+                        configuration.setAllowedOrigins(Collections.singletonList("http://43.201.182.155:8080"));
+                        configuration.setAllowedOrigins(Collections.singletonList("http://teamc.cdg4gwiaiwzy.ap-northeast-2.rds.amazonaws.com:3306/teamc"));
+                        configuration.setAllowedOrigins(Collections.singletonList("http://teamc.cdg4gwiaiwzy.ap-northeast-2.rds.amazonaws.com:3000/teamc"));
+                        configuration.setAllowedOrigins(Collections.singletonList("http://teamc.cdg4gwiaiwzy.ap-northeast-2.rds.amazonaws.com:8080/teamc"));
+                        configuration.setAllowedOrigins(Collections.singletonList("http://teamc.cdg4gwiaiwzy.ap-northeast-2.rds.amazonaws.com:3306"));
+                        configuration.setAllowedOrigins(Collections.singletonList("http://teamc.cdg4gwiaiwzy.ap-northeast-2.rds.amazonaws.com:3000"));
+                        configuration.setAllowedOrigins(Collections.singletonList("http://teamc.cdg4gwiaiwzy.ap-northeast-2.rds.amazonaws.com:8080"));
+
+
                         configuration.setAllowedMethods(Collections.singletonList("*"));
                         configuration.setAllowCredentials(true);
                         configuration.setAllowedHeaders(Collections.singletonList("*"));
