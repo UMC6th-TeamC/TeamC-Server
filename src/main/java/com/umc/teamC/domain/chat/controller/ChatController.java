@@ -7,12 +7,14 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.messaging.handler.annotation.MessageMapping;
 import org.springframework.messaging.handler.annotation.SendTo;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.CrossOrigin;
 
 import java.util.HashMap;
 import java.util.Map;
 
 @Controller
 @RequiredArgsConstructor
+@CrossOrigin("*")
 public class ChatController {
 
     private final ChatService chatService;
@@ -30,7 +32,7 @@ public class ChatController {
                 .build();
         Chat chat = chatService.saveMessage(message1);
         Map<String, Object> result = new HashMap<>();
-        result.put("id", chat.getId());
+        result.put("id", chat.getChatId());
         result.put("sender", chat.getSender());
         result.put("content", chat.getContent());
         return result;

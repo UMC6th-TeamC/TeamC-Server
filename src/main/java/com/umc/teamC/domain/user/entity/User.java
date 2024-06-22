@@ -1,8 +1,12 @@
 package com.umc.teamC.domain.user.entity;
 
+import com.umc.teamC.domain.chat.entity.ChatRoomUser;
 import com.umc.teamC.global.common.BaseEntity;
 import jakarta.persistence.*;
 import lombok.*;
+
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Getter
@@ -13,18 +17,22 @@ public class User extends BaseEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long user_id;
+    private Long userId;
 
-    @Column(nullable = false, length = 9)
-    private String student_id;
+    @Column(nullable = false)
+    private String username;
 
-    @Column(nullable = false, length = 20)
+    @Column(nullable = false)
     private String password;
 
-    @Column(nullable = false, length = 10)
     private String nickname;
 
-    @OneToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "verification_id")
-    private UserVerification userVerification;
+    private String role;
+
+    @OneToMany(mappedBy = "user")
+    private List<ChatRoomUser> chatRoomUserList = new ArrayList<>();
+
+    public void update(String nickname) {
+        this.nickname = nickname;
+    }
 }
