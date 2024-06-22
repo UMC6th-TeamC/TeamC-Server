@@ -4,11 +4,13 @@ import com.umc.teamC.domain.user.dto.JoinDTO;
 import com.umc.teamC.domain.user.service.JoinService;
 import com.umc.teamC.global.common.BaseResponse;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 @Controller
 @ResponseBody
+@CrossOrigin("*")
 public class JoinController {
 
     private final JoinService joinService;
