@@ -6,6 +6,7 @@ import com.umc.teamC.domain.user.jwt.LoginFilter;
 import jakarta.servlet.http.HttpServletRequest;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.http.HttpMethod;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.config.annotation.authentication.configuration.AuthenticationConfiguration;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
@@ -15,11 +16,9 @@ import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
-import org.springframework.security.web.authentication.logout.LogoutFilter;
 import org.springframework.web.cors.CorsConfiguration;
 import org.springframework.web.cors.CorsConfigurationSource;
 
-import java.util.Arrays;
 import java.util.Collections;
 
 @Configuration
@@ -36,7 +35,6 @@ public class SecurityConfig {
     private final AuthenticationConfiguration authenticationConfiguration;
 
     private final JWTUtil jwtUtil;
-
 
     public SecurityConfig(AuthenticationConfiguration authenticationConfiguration, JWTUtil jwtUtil) {
 
@@ -68,20 +66,7 @@ public class SecurityConfig {
 
                         CorsConfiguration configuration = new CorsConfiguration();
 
-                        configuration.setAllowedOrigins(Arrays.asList(
-                                "http://localhost:3000",
-                                "http://43.201.182.155:3000",
-                                "http://43.201.182.155",
-                                "http://43.201.182.155:8080",
-                                "http://teamc.cdg4gwiaiwzy.ap-northeast-2.rds.amazonaws.com:3306/teamc",
-                                "http://teamc.cdg4gwiaiwzy.ap-northeast-2.rds.amazonaws.com:3000/teamc",
-                                "http://teamc.cdg4gwiaiwzy.ap-northeast-2.rds.amazonaws.com:8080/teamc",
-                                "http://teamc.cdg4gwiaiwzy.ap-northeast-2.rds.amazonaws.com:3306",
-                                "http://teamc.cdg4gwiaiwzy.ap-northeast-2.rds.amazonaws.com:3000",
-                                "http://teamc.cdg4gwiaiwzy.ap-northeast-2.rds.amazonaws.com:8080"
-                        ));
-
-
+                        configuration.setAllowedOrigins(Collections.singletonList("*"));
                         configuration.setAllowedMethods(Collections.singletonList("*"));
                         configuration.setAllowCredentials(true);
                         configuration.setAllowedHeaders(Collections.singletonList("*"));
@@ -92,11 +77,6 @@ public class SecurityConfig {
                         return configuration;
                     }
                 })));
-
-
-        //csrf disable
-        http
-                .csrf((auth) -> auth.disable());
 
         http.csrf(AbstractHttpConfigurer::disable);
         //http.cors(AbstractHttpConfigurer::disable);
@@ -112,6 +92,9 @@ public class SecurityConfig {
         }));
 
 
+        //csrf disable
+        http
+                .csrf((auth) -> auth.disable());
 
         //form 로그인 방식 disable
         http
@@ -139,7 +122,6 @@ public class SecurityConfig {
         //로그인 필터 등록
         http
                 .addFilterAt(new LoginFilter(authenticationManager(authenticationConfiguration), jwtUtil), UsernamePasswordAuthenticationFilter.class);
-
 
         //세션 설정
         //JWT에서는 세션을 항상 STATELESS 상태로 저장해야 함
