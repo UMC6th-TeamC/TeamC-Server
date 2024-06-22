@@ -1,6 +1,7 @@
 package com.umc.teamC.domain.chat.entity;
 
 import com.umc.teamC.domain.user.entity.User;
+import com.umc.teamC.global.common.BaseEntity;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -9,7 +10,7 @@ import lombok.*;
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @Builder
 @Getter
-public class ChatRoomUser {
+public class ChatRoomUser extends BaseEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
