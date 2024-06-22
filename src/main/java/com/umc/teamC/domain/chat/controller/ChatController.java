@@ -1,9 +1,9 @@
 package com.umc.teamC.domain.chat.controller;
 
-
 import com.umc.teamC.domain.chat.entity.Chat;
 import com.umc.teamC.domain.chat.service.ChatService;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.messaging.handler.annotation.MessageMapping;
 import org.springframework.messaging.handler.annotation.SendTo;
 import org.springframework.stereotype.Controller;
@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.CrossOrigin;
 import java.util.HashMap;
 import java.util.Map;
 
+@Slf4j
 @Controller
 @RequiredArgsConstructor
 @CrossOrigin("*")
@@ -23,7 +24,8 @@ public class ChatController {
     @MessageMapping("/chat.message")
     @SendTo("/topic/public")
     public Map<String, Object> sendMessage(Map<String, Object> message) {
-//        System.out.println(message);
+        // 메세지 확인 로그
+        log.info(String.valueOf(message));
         String sender = message.get("sender").toString();
         String content = message.get("content").toString();
         Chat message1 = Chat.builder()

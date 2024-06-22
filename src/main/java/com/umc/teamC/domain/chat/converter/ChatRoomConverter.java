@@ -18,6 +18,7 @@ public class ChatRoomConverter {
 
     public static ChatRoomDto.ChatRoomResponseDto toChatRoomResponseDto(ChatRoom chatRoom, String lastMessage, Integer memberCount) {
         return ChatRoomDto.ChatRoomResponseDto.builder()
+                .chatRoomId(chatRoom.getRoomId())
                 .dateTime(chatRoom.getDateTime())
                 .region(chatRoom.getRegion())
                 .lastMessage(lastMessage)
