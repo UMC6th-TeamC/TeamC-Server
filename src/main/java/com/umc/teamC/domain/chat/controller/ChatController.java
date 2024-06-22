@@ -22,10 +22,10 @@ public class ChatController {
     private final ChatService chatService;
 
     // 메시지 보내기 컨트롤러
-    @MessageMapping("/chat.message/{chatRoomId}")
-    @SendTo("/topic/{chatRoomId}")
+    @MessageMapping("/chat.message")
+    @SendTo("/topic")
     public Map<String, Object> sendMessage(
-            @PathVariable Long chatRoomId,
+//            @PathVariable Long chatRoomId,
             Map<String, Object> message) {
         // 메시지 확인 로그
         log.info("Received message: {}", message);
@@ -35,7 +35,7 @@ public class ChatController {
         Chat message1 = Chat.builder()
                 .sender(sender)
                 .content(content)
-                .chatId(chatRoomId)
+//                .chatId(chatRoomId)
                 .build();
 
         Chat chat = chatService.saveMessage(message1);
@@ -46,10 +46,10 @@ public class ChatController {
         return result;
     }
 
-    @MessageMapping("/chat.addUser/{chatRoomId}")
-    @SendTo("/topic/{chatRoomId}")
-    public Chat addUser(@PathVariable Long chatRoomId, Chat chat) {
-        chat.setId(chatRoomId);
+    @MessageMapping("/chat.addUser")
+    @SendTo("/topic")
+    public Chat addUser(Chat chat) {
+        //chat.setId(chatRoomId);
         return chat;
     }
 }
