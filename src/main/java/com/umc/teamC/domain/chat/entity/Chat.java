@@ -21,4 +21,8 @@ public class Chat extends BaseEntity {
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "chat_room_id")
     private ChatRoom chatRoom;
+
+    public void setId(Long id) {
+        chatId = id;
+    }
 }

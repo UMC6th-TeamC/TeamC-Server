@@ -15,6 +15,7 @@ public class ChatRoomDto {
 
     @Builder
     public record ChatRoomResponseDto (
+            Long chatRoomId,
             LocalDateTime dateTime,
             String region,
             String lastMessage,

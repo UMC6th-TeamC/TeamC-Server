@@ -14,7 +14,6 @@ import org.springframework.web.bind.annotation.*;
 
 @Controller
 @ResponseBody
-//@CrossOrigin("*")
 public class UserController {
     private final UserService userService;
 
