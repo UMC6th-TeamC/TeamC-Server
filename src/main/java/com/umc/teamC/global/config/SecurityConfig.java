@@ -125,7 +125,7 @@ public class SecurityConfig {
         //경로별 인가 작업
         http
                 .authorizeHttpRequests((auth) -> auth
-                        .requestMatchers("/login", "/", "join").permitAll()
+                        .requestMatchers("/login", "/", "/join").permitAll()
                         .requestMatchers("/mail/check", "/mail/authentication").permitAll()
                         .requestMatchers(allowUrl).permitAll()
                         .requestMatchers("/user").hasRole("ADMIN")
