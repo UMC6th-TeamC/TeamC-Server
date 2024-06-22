@@ -15,7 +15,6 @@ import java.util.List;
 
 @RestController
 @RequiredArgsConstructor
-//@CrossOrigin("*")
 @RequestMapping("/chat-group")
 public class ChatRoomController {
 

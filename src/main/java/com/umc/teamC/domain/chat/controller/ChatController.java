@@ -32,7 +32,7 @@ public class ChatController {
                 .build();
         Chat chat = chatService.saveMessage(message1);
         Map<String, Object> result = new HashMap<>();
-        result.put("id", chat.getId());
+        result.put("id", chat.getChatId());
         result.put("sender", chat.getSender());
         result.put("content", chat.getContent());
         return result;
