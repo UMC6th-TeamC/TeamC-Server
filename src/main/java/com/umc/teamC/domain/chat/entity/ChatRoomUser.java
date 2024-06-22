@@ -1,6 +1,6 @@
 package com.umc.teamC.domain.chat.entity;
 
-import com.umc.teamC.global.common.BaseEntity;
+import com.umc.teamC.domain.user.entity.User;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -9,14 +9,15 @@ import lombok.*;
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @Builder
 @Getter
-public class Chat extends BaseEntity {
+public class ChatRoomUser {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long chatId;
+    private Long chatRoomUserId;
 
-    private String content;
-    private String sender;
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "user_id")
+    private User user;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "chat_room_id")

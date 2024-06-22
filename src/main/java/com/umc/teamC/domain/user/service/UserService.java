@@ -1,6 +1,5 @@
 package com.umc.teamC.domain.user.service;
 
-
 import com.umc.teamC.domain.user.dto.UpdateUserDTO;
 import com.umc.teamC.domain.user.entity.User;
 import com.umc.teamC.domain.user.repository.UserRepository;
