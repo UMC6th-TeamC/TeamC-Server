@@ -7,6 +7,7 @@ import com.umc.teamC.domain.email.service.EmailServiceImpl;
 import com.umc.teamC.global.common.BaseResponse;
 import io.swagger.v3.oas.annotations.Operation;
 import lombok.RequiredArgsConstructor;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
@@ -15,7 +16,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @RequiredArgsConstructor
-
+//@CrossOrigin("*")
 public class MailController {
 
     private final EmailService emailService;

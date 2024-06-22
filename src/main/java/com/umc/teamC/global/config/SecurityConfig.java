@@ -6,18 +6,20 @@ import com.umc.teamC.domain.user.jwt.LoginFilter;
 import jakarta.servlet.http.HttpServletRequest;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.http.HttpMethod;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.config.annotation.authentication.configuration.AuthenticationConfiguration;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
+import org.springframework.security.config.annotation.web.configurers.AbstractHttpConfigurer;
 import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
+import org.springframework.security.web.authentication.logout.LogoutFilter;
 import org.springframework.web.cors.CorsConfiguration;
 import org.springframework.web.cors.CorsConfigurationSource;
 
+import java.util.Arrays;
 import java.util.Collections;
 
 @Configuration
@@ -34,6 +36,7 @@ public class SecurityConfig {
     private final AuthenticationConfiguration authenticationConfiguration;
 
     private final JWTUtil jwtUtil;
+
 
     public SecurityConfig(AuthenticationConfiguration authenticationConfiguration, JWTUtil jwtUtil) {
 
@@ -65,7 +68,20 @@ public class SecurityConfig {
 
                         CorsConfiguration configuration = new CorsConfiguration();
 
-                        configuration.setAllowedOrigins(Collections.singletonList("http://localhost:3000"));
+                        configuration.setAllowedOrigins(Arrays.asList(
+                                "http://localhost:3000",
+                                "http://43.201.182.155:3000",
+                                "http://43.201.182.155",
+                                "http://43.201.182.155:8080",
+                                "http://teamc.cdg4gwiaiwzy.ap-northeast-2.rds.amazonaws.com:3306/teamc",
+                                "http://teamc.cdg4gwiaiwzy.ap-northeast-2.rds.amazonaws.com:3000/teamc",
+                                "http://teamc.cdg4gwiaiwzy.ap-northeast-2.rds.amazonaws.com:8080/teamc",
+                                "http://teamc.cdg4gwiaiwzy.ap-northeast-2.rds.amazonaws.com:3306",
+                                "http://teamc.cdg4gwiaiwzy.ap-northeast-2.rds.amazonaws.com:3000",
+                                "http://teamc.cdg4gwiaiwzy.ap-northeast-2.rds.amazonaws.com:8080"
+                        ));
+
+
                         configuration.setAllowedMethods(Collections.singletonList("*"));
                         configuration.setAllowCredentials(true);
                         configuration.setAllowedHeaders(Collections.singletonList("*"));
@@ -82,6 +98,21 @@ public class SecurityConfig {
         http
                 .csrf((auth) -> auth.disable());
 
+        http.csrf(AbstractHttpConfigurer::disable);
+        //http.cors(AbstractHttpConfigurer::disable);
+        //cors 에러해결
+        http.cors((c)->c.configurationSource(request -> {
+            CorsConfiguration config = new CorsConfiguration();
+            config.setAllowedOrigins(Collections.singletonList("*"));
+            config.setAllowedMethods(Collections.singletonList("*"));
+            config.setAllowCredentials(true);
+            config.setAllowedHeaders(Collections.singletonList("*"));
+            config.setMaxAge(3600L);
+            return config;
+        }));
+
+
+
         //form 로그인 방식 disable
         http
                 .formLogin((auth) -> auth.disable());
@@ -94,7 +125,7 @@ public class SecurityConfig {
         //경로별 인가 작업
         http
                 .authorizeHttpRequests((auth) -> auth
-                        .requestMatchers("/login", "/", "join").permitAll()
+                        .requestMatchers("/login", "/", "/join").permitAll()
                         .requestMatchers("/mail/check", "/mail/authentication").permitAll()
                         .requestMatchers(allowUrl).permitAll()
                         .requestMatchers("/user").hasRole("ADMIN")
@@ -108,6 +139,7 @@ public class SecurityConfig {
         //로그인 필터 등록
         http
                 .addFilterAt(new LoginFilter(authenticationManager(authenticationConfiguration), jwtUtil), UsernamePasswordAuthenticationFilter.class);
+
 
         //세션 설정
         //JWT에서는 세션을 항상 STATELESS 상태로 저장해야 함
