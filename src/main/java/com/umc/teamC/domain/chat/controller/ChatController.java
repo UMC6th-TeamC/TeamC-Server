@@ -14,7 +14,7 @@ import java.util.Map;
 
 @Controller
 @RequiredArgsConstructor
-@CrossOrigin("*")
+//@CrossOrigin("*")
 public class ChatController {
 
     private final ChatService chatService;

@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 @Controller
 @ResponseBody
-@CrossOrigin("*")
+//@CrossOrigin("*")
 public class MainController {
     @GetMapping("/")
     public BaseResponse<String> MainP() {
