@@ -18,6 +18,7 @@ import org.springframework.security.web.authentication.logout.LogoutFilter;
 import org.springframework.web.cors.CorsConfiguration;
 import org.springframework.web.cors.CorsConfigurationSource;
 
+import java.util.Arrays;
 import java.util.Collections;
 
 @Configuration
@@ -66,16 +67,18 @@ public class SecurityConfig {
 
                         CorsConfiguration configuration = new CorsConfiguration();
 
-                        configuration.setAllowedOrigins(Collections.singletonList("http://localhost:3000"));
-                        configuration.setAllowedOrigins(Collections.singletonList("http://43.201.182.155:3000"));
-                        configuration.setAllowedOrigins(Collections.singletonList("http://43.201.182.155"));
-                        configuration.setAllowedOrigins(Collections.singletonList("http://43.201.182.155:8080"));
-                        configuration.setAllowedOrigins(Collections.singletonList("http://teamc.cdg4gwiaiwzy.ap-northeast-2.rds.amazonaws.com:3306/teamc"));
-                        configuration.setAllowedOrigins(Collections.singletonList("http://teamc.cdg4gwiaiwzy.ap-northeast-2.rds.amazonaws.com:3000/teamc"));
-                        configuration.setAllowedOrigins(Collections.singletonList("http://teamc.cdg4gwiaiwzy.ap-northeast-2.rds.amazonaws.com:8080/teamc"));
-                        configuration.setAllowedOrigins(Collections.singletonList("http://teamc.cdg4gwiaiwzy.ap-northeast-2.rds.amazonaws.com:3306"));
-                        configuration.setAllowedOrigins(Collections.singletonList("http://teamc.cdg4gwiaiwzy.ap-northeast-2.rds.amazonaws.com:3000"));
-                        configuration.setAllowedOrigins(Collections.singletonList("http://teamc.cdg4gwiaiwzy.ap-northeast-2.rds.amazonaws.com:8080"));
+                        configuration.setAllowedOrigins(Arrays.asList(
+                                "http://localhost:3000",
+                                "http://43.201.182.155:3000",
+                                "http://43.201.182.155",
+                                "http://43.201.182.155:8080",
+                                "http://teamc.cdg4gwiaiwzy.ap-northeast-2.rds.amazonaws.com:3306/teamc",
+                                "http://teamc.cdg4gwiaiwzy.ap-northeast-2.rds.amazonaws.com:3000/teamc",
+                                "http://teamc.cdg4gwiaiwzy.ap-northeast-2.rds.amazonaws.com:8080/teamc",
+                                "http://teamc.cdg4gwiaiwzy.ap-northeast-2.rds.amazonaws.com:3306",
+                                "http://teamc.cdg4gwiaiwzy.ap-northeast-2.rds.amazonaws.com:3000",
+                                "http://teamc.cdg4gwiaiwzy.ap-northeast-2.rds.amazonaws.com:8080"
+                        ));
 
 
                         configuration.setAllowedMethods(Collections.singletonList("*"));
