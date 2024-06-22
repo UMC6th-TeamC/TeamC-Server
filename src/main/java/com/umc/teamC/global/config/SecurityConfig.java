@@ -19,6 +19,7 @@ import org.springframework.security.web.authentication.UsernamePasswordAuthentic
 import org.springframework.web.cors.CorsConfiguration;
 import org.springframework.web.cors.CorsConfigurationSource;
 
+import java.util.Arrays;
 import java.util.Collections;
 
 @Configuration
@@ -29,6 +30,7 @@ public class SecurityConfig {
             "/swagger-ui/**",
             "/swagger-resources/**",
             "/v3/api-docs/**",
+            "/ws/**"
     };
 
     //AuthenticationManager가 인자로 받을 AuthenticationConfiguraion 객체 생성자 주입
@@ -66,7 +68,7 @@ public class SecurityConfig {
 
                         CorsConfiguration configuration = new CorsConfiguration();
 
-                        configuration.setAllowedOrigins(Collections.singletonList("*"));
+                        configuration.setAllowedOriginPatterns(Arrays.asList("*"));
                         configuration.setAllowedMethods(Collections.singletonList("*"));
                         configuration.setAllowCredentials(true);
                         configuration.setAllowedHeaders(Collections.singletonList("*"));
@@ -77,19 +79,19 @@ public class SecurityConfig {
                         return configuration;
                     }
                 })));
-
-        http.csrf(AbstractHttpConfigurer::disable);
-        //http.cors(AbstractHttpConfigurer::disable);
-        //cors 에러해결
-        http.cors((c)->c.configurationSource(request -> {
-            CorsConfiguration config = new CorsConfiguration();
-            config.setAllowedOrigins(Collections.singletonList("*"));
-            config.setAllowedMethods(Collections.singletonList("*"));
-            config.setAllowCredentials(true);
-            config.setAllowedHeaders(Collections.singletonList("*"));
-            config.setMaxAge(3600L);
-            return config;
-        }));
+//
+//        http.csrf(AbstractHttpConfigurer::disable);
+//        //http.cors(AbstractHttpConfigurer::disable);
+//        //cors 에러해결
+//        http.cors((c)->c.configurationSource(request -> {
+//            CorsConfiguration config = new CorsConfiguration();
+//            config.setAllowedOrigins(Collections.singletonList("*"));
+//            config.setAllowedMethods(Collections.singletonList("*"));
+//            config.setAllowCredentials(true);
+//            config.setAllowedHeaders(Collections.singletonList("*"));
+//            config.setMaxAge(3600L);
+//            return config;
+//        }));
 
 
         //csrf disable
@@ -112,6 +114,7 @@ public class SecurityConfig {
                         .requestMatchers("/mail/check", "/mail/authentication").permitAll()
                         .requestMatchers(allowUrl).permitAll()
                         .requestMatchers("/user").hasRole("ADMIN")
+                        .requestMatchers("/ws").permitAll()
                         .anyRequest().authenticated());
 
 
