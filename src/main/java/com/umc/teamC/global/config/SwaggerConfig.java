@@ -34,8 +34,8 @@ public class SwaggerConfig {
         license.setName("{Application}");
 
         return new Info()
-                .title("Spon-Us API Document")
-                .description("Spon-Us의 API 문서 입니다.")
+                .title("TeamC API Document")
+                .description("TeamC의 API 문서 입니다.")
                 .version("v0.0.1")
                 .license(license);
     }
