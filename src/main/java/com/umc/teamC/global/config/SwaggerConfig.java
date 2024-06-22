@@ -10,8 +10,10 @@ import io.swagger.v3.oas.models.info.License;
 import io.swagger.v3.oas.models.security.SecurityRequirement;
 import io.swagger.v3.oas.models.security.SecurityScheme;
 import io.swagger.v3.oas.models.servers.Server;
+import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 
 @Configuration
+@EnableWebSecurity
 public class SwaggerConfig {
     // url : http://localhost:8080/swagger-ui/index.html#/
     private static final String SECURITY_SCHEME_NAME = "bearerAuth";
@@ -32,8 +34,8 @@ public class SwaggerConfig {
         license.setName("{Application}");
 
         return new Info()
-                .title("Spon-Us API Document")
-                .description("Spon-Us의 API 문서 입니다.")
+                .title("TeamC API Document")
+                .description("TeamC의 API 문서 입니다.")
                 .version("v0.0.1")
                 .license(license);
     }

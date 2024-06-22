@@ -1,18 +1,30 @@
 package com.umc.teamC.domain.user.service;
 
 
+import com.umc.teamC.domain.user.dto.UpdateUserDTO;
 import com.umc.teamC.domain.user.entity.User;
-import com.umc.teamC.domain.user.dto.UserRequestDTO;
+import com.umc.teamC.domain.user.repository.UserRepository;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
-public interface UserService {
-    User createUser(UserRequestDTO.JoinDTO joinDTO);
+@Service
+@Transactional
+public class UserService {
+    private final UserRepository userRepository;
 
-    //User readUser(Long userId);
+    public UserService(UserRepository userRepository) {
+        this.userRepository = userRepository;
+    }
 
-    //void deleteUser(Long userId);
 
-    //List<User> readUsers();
+    public String getUser(String username) {
+        User user = userRepository.findByUsername(username);
+        return user.getNickname();
+    }
 
-    //User updateUser(UserRequestDTO.UpdateUserDTO updateUserDTO, Long userId);
-
+    public User updateUser(UpdateUserDTO updateUserDTO, String username) {
+        User user = userRepository.findByUsername(username);
+        user.update(updateUserDTO.getNickname());
+        return user;
+    }
 }
