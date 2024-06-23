@@ -2,16 +2,18 @@ package com.umc.teamC.domain.chat.controller;
 
 import com.umc.teamC.domain.chat.entity.Chat;
 import com.umc.teamC.domain.chat.service.ChatService;
+import com.umc.teamC.global.util.RedisUtil;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.messaging.handler.annotation.MessageMapping;
 import org.springframework.messaging.handler.annotation.SendTo;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PathVariable;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.UUID;
+import java.util.concurrent.TimeUnit;
 
 @Slf4j
 @Controller
@@ -19,13 +21,13 @@ import java.util.Map;
 //@CrossOrigin("*")
 public class ChatController {
 
-    private final ChatService chatService;
+    private final RedisUtil redisUtil;
 
     // 메시지 보내기 컨트롤러
-    @MessageMapping("/chat.message")
+    @MessageMapping("/chat.message/{chatRoomId}")
     @SendTo("/topic")
     public Map<String, Object> sendMessage(
-//            @PathVariable Long chatRoomId,
+            @PathVariable Long chatRoomId,
             Map<String, Object> message) {
         // 메시지 확인 로그
         log.info("Received message: {}", message);
@@ -35,21 +37,25 @@ public class ChatController {
         Chat message1 = Chat.builder()
                 .sender(sender)
                 .content(content)
-//                .chatId(chatRoomId)
+                .chatId(chatRoomId)
                 .build();
 
-        Chat chat = chatService.saveMessage(message1);
+        // Redis에 메시지 저장
+        String messageId = UUID.randomUUID().toString();
+        String redisKey = "chat:" + chatRoomId + ":" + messageId;
+        redisUtil.save(redisKey, message1, 1L, TimeUnit.DAYS);
+
         Map<String, Object> result = new HashMap<>();
-        result.put("id", chat.getChatId());
-        result.put("sender", chat.getSender());
-        result.put("content", chat.getContent());
+        result.put("id", messageId);
+        result.put("sender", message1.getSender());
+        result.put("content", message1.getContent());
         return result;
     }
 
-    @MessageMapping("/chat.addUser")
+    @MessageMapping("/chat.addUser/{chatRoomId}")
     @SendTo("/topic")
-    public Chat addUser(Chat chat) {
-        //chat.setId(chatRoomId);
+    public Chat addUser(Chat chat, @PathVariable Long chatRoomId) {
+        chat.setId(chatRoomId);
         return chat;
     }
 }
