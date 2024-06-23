@@ -1,0 +1,27 @@
+<!-- index.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>STOMP Chat</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="chat-container">
+    <div class="chat-header">
+      <h1>STOMP Chat</h1>
+    </div>
+    <div class="chat-messages">
+      <!-- 채팅 메시지가 표시되는 영역 -->
+    </div>
+    <div class="chat-input">
+      <input type="text" placeholder="Type your message..." id="chat-input">
+      <button id="send-button">Send</button>
+    </div>
+  </div>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/stomp.js/2.3.3/stomp.min.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>
