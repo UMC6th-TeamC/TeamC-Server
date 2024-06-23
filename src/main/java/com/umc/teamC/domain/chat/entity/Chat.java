@@ -22,7 +22,7 @@ public class Chat extends BaseEntity {
     @JoinColumn(name = "chat_room_id")
     private ChatRoom chatRoom;
 
-    public void setId(Long id) {
-        chatId = id;
+    public void updateChatRoom(ChatRoom newRoom) {
+        chatRoom = newRoom;
     }
 }

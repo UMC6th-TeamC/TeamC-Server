@@ -18,8 +18,12 @@ public enum ErrorStatus implements BaseErrorCode {
 
     _AUTHENTICATION_FAILED(HttpStatus.UNAUTHORIZED, "AUTH403", "로그인 실패."),
 
+    // 채팅방 에러
+    _NOT_FOUND_CHAT_ROOM(HttpStatus.NOT_FOUND, "ROOM400", "해당 채팅방이 존재하지 않습니다."),
+
     // User 에러
     _NOT_FOUND_USER(HttpStatus.NOT_FOUND, "USER400", "사용자가 존재하지 않습니다.");
+
 
     private final HttpStatus httpStatus;
     private final String code;

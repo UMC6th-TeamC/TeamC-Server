@@ -15,7 +15,7 @@ class HistoryController {
     private final ChatService chatService;
 
     @GetMapping("/chat/history/{chatRoomId}")
-    public List<Chat> getChatHistory(@PathVariable String chatRoomId) {
-        return chatService.getAllMessages();
+    public List<Chat> getChatHistory(@PathVariable Long chatRoomId) {
+        return chatService.getAllMessages(chatRoomId);
     }
 }
