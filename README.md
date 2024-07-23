@@ -9,33 +9,32 @@ UMC6th 미니 프로젝트 C팀 서버 레포지토리입니다.
 
 
 # 스뮤풀 SMUPOOL(상명대 서울캠퍼스 카풀 매칭 서비스)
-<p align="center">
-  <img width="50%" align="center" src="https://github.com/user-attachments/assets/d36b147e-e53f-42ad-b094-c34f1e5b1b5c">
-</p>
+<p align="left">
+  <img width="70%" align="center" src="https://github.com/user-attachments/assets/d36b147e-e53f-42ad-b094-c34f1e5b1b5c">
+</p>  
+
+### [상명대학교 UMC 6기 미니프로젝트 1위 우승작]
+<p align="left">
+  <img width="70%" align="center" src="https://github.com/user-attachments/assets/f542a828-7bcd-4dcd-93b4-5cacc36839ef"><br/>
+</p>  
 
 
-상명대학교 UMC 6기 미니프로젝트 1위 우승작
+<br/>  
 
-<p align="center">
-  <img width="50%" align="center" src="https://github.com/user-attachments/assets/f542a828-7bcd-4dcd-93b4-5cacc36839ef">
-</p>
-
-
-<br/>
 
 
 ## 😎 프로젝트 소개
 
-###상명대생을 위한 카풀 서비스
+#### 상명대생을 위한 카풀 서비스
 믿을 수 있는 상명대 학우들과 편하게 택시를 타세요
 
-###학생인증 계정 생성
+#### 학생인증 계정 생성
 우리학교 학생이니까 안심! 슴우들만의 계정을 생성하고 관리하세요
 
-###내가 원하는 시간과 인원
+#### 내가 원하는 시간과 인원
 시간과 인원 선택으로 편리한 카풀을 경험해보세요
 
-###상명대생을 위한 카풀 서비스
+#### 상명대생을 위한 카풀 서비스
 채팅으로 완벽해진 경험
 
 
