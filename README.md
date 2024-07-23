@@ -7,12 +7,12 @@ UMC6th 미니 프로젝트 C팀 서버 레포지토리입니다.
   <img width="50%" align="center" src="https://github.com/user-attachments/assets/d36b147e-e53f-42ad-b094-c34f1e5b1b5c">
 </p>
 
-<hr/>
+
+
 
 # 스뮤풀 SMUPOOL(상명대 서울캠퍼스 카풀 매칭 서비스)
 상명대학교 UMC 6기 미니프로젝트 1위 우승작
 
-<hr/>
 
 <p align="center">
   <img width="50%" align="center" src="https://github.com/user-attachments/assets/f542a828-7bcd-4dcd-93b4-5cacc36839ef">
