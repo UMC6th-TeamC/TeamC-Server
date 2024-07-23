@@ -4,7 +4,7 @@ UMC6th 미니 프로젝트 C팀 서버 레포지토리입니다.
 <br/>
 
 <p align="center">
-  <img width="50%" align="left" src="https://github.com/user-attachments/assets/d36b147e-e53f-42ad-b094-c34f1e5b1b5c">
+  <img width="50%" align="center" src="https://github.com/user-attachments/assets/d36b147e-e53f-42ad-b094-c34f1e5b1b5c">
 </p>
 
 <hr/>
@@ -15,7 +15,7 @@ UMC6th 미니 프로젝트 C팀 서버 레포지토리입니다.
 <hr/>
 
 <p align="center">
-  <img width="50%" align="left" src="https://github.com/user-attachments/assets/f542a828-7bcd-4dcd-93b4-5cacc36839ef">
+  <img width="50%" align="center" src="https://github.com/user-attachments/assets/f542a828-7bcd-4dcd-93b4-5cacc36839ef">
 </p>
 
 
